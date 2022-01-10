@@ -13,10 +13,7 @@ public:
             else{
                 mpp[fruits[i]]=1;
                 distinct_count++;
-            }
-            
-            if(distinct_count>2){
-                
+            }   
                 while(distinct_count>2 && rel<=i){
                     mpp[fruits[rel]]--;
                     if(mpp[fruits[rel]]==0){
@@ -25,7 +22,7 @@ public:
                     }
                     rel++;
                 }
-            }
+            
             ans=max(ans,i-rel+1);
         }
         return ans;
