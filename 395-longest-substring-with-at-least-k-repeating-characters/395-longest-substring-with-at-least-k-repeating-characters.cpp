@@ -5,7 +5,7 @@ public:
         int ans=0;
         bool flag=false;
         for(int i=0;i<len;i++){
-           map<char,int>mpp;
+           unordered_map<char,int>mpp;
            for(int j=i;j<len;j++){
                mpp[s[j]]++;
                for(auto &it:mpp){
