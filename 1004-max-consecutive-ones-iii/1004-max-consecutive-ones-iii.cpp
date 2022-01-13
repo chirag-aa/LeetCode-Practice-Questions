@@ -24,7 +24,7 @@ public:
             if(nums[i]==0){
                 zero_cnt++;
             }
-            if(zero_cnt>k){
+            
                 while(zero_cnt>k && i>=release){
                     if(nums[release]==0){
                         zero_cnt--;
@@ -34,7 +34,7 @@ public:
                         release++;
                     }
                 }
-            }
+            
             ans=max(ans,i-release+1);
         }
         return ans;
