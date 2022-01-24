@@ -15,6 +15,8 @@ public:
         if(ans==true){
             return true;
         }
+        
+        
         for(int i=0;i<length;i++){
             if(word[i]>='a' && word[i]<='z'){
                 ans=true;
@@ -27,9 +29,10 @@ public:
         if(ans==true){
             return true;
         }
-        for(int i=1;i<length;i++){
-            if(word[0]>='A' && word[0]<='Z'
-                 && word[i]>='a' && word[i]<='z'){
+        
+        if(word[0]>='A' && word[0]<='Z'){
+            for(int i=1;i<length;i++){
+            if(word[i]>='a' && word[i]<='z'){
                 ans=true;
             }
                 else{
@@ -37,9 +40,11 @@ public:
                     break;
                 }
             }
-        if(ans==true){
+            if(ans==true){
             return true;
         }
+            
+        }     
         return ans;
     }
 };
