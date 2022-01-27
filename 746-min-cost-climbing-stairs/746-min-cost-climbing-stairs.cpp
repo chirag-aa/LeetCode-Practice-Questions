@@ -1,16 +1,18 @@
 class Solution {
 public:
     int helper(int idx,int n,vector<int>& cost,vector<int>& dp){
-       if(idx>=n){
+       if(idx==n){
            return 0;
        }
         if(dp[idx]!=-1){
             return dp[idx];
         }
         int ansl=helper(idx+1,n,cost,dp)+cost[idx];
-        int ansr=helper(idx+2,n,cost,dp)+cost[idx];
-        
-        return dp[idx]= min(ansl,ansr);
+        int ansr=INT_MAX;
+        if(idx+2<=n){
+            ansr=helper(idx+2,n,cost,dp)+cost[idx];
+        }
+            return dp[idx]= min(ansl,ansr);
     }
     int minCostClimbingStairs(vector<int>& cost) {
         int n=cost.size();
