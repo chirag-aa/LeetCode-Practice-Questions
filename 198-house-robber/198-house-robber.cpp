@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int maxMoney(vector<int>& nums,int n,int idx,vector<int>& dp){
+        if(idx>=n){
+            return 0;
+        }
+        if(idx==n-1){
+            return nums[idx];
+        }
+        
+        if(dp[idx]!=-1){
+            return dp[idx];
+        }
+        int ansl= nums[idx]+maxMoney(nums,n,idx+2,dp);
+        int ansr= 0+maxMoney(nums,n,idx+1,dp);
+        return dp[idx]=max(ansl,ansr);
+    }
+    int rob(vector<int>& nums) {
+        int n=nums.size();
+        vector<int>dp(n+1,-1);
+        int ans=maxMoney(nums,n,0,dp);
+        return ans;
+        
+    }
+};
