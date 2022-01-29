@@ -20,19 +20,19 @@ public:
         vector<int>dp(n,-1);
         // int ans=maxMoney(nums,n,0,dp);
         
-        dp[0]=nums[0];
+        dp[n-1]=nums[n-1];
         int ans1=INT_MIN;
         int ans2=INT_MIN;
-        for(int i=1;i<n;i++){
+        for(int i=n-2;i>=0;i--){
             ans1=nums[i];
-            if(i-2>=0){
-                ans1 =ans1+dp[i-2];
+            if(i+2<n){
+                ans1 =ans1+dp[i+2];
             }
-            ans2=0+dp[i-1];
+            ans2=0+dp[i+1];
             
             dp[i]=max(ans1,ans2);
         }
-        return dp[n-1];
+        return dp[0];
         
     }
 };
