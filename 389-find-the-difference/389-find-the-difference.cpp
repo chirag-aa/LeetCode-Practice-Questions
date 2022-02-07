@@ -15,7 +15,7 @@ public:
             }
         }
         for(auto &it:mpp){
-            return ans=it.first;
+             ans=it.first;
         }
         return ans;
     }
