@@ -8,33 +8,31 @@ using namespace std;
 class Solution
 {
     public:
-    int helper(int w,int wt[],int val[],int n,int idx, unordered_map<string,int>& mpp){
+    //Function to return max value that can be put in knapsack of capacity W.
+    int maxProfit(int w,int wt[],int val[],int n,int idx,unordered_map<string,int>& mpp){
         if(idx==n || w<=0){
             return 0;
         }
-        string makeKey=to_string(idx)+"_"+to_string(w);
+        string makeKey= to_string(idx)+ "_" +to_string(w);
         if(mpp.find(makeKey)!=mpp.end()){
             return mpp[makeKey];
         }
-        int include=0;
+        int include=INT_MIN;
+        
         if(w-wt[idx]>=0){
-            include=helper(w-wt[idx],wt,val,n,idx+1,mpp)+val[idx];
+            include=maxProfit(w-wt[idx],wt,val,n,idx+1,mpp)+val[idx];
         }
-        int notinclude=helper(w,wt,val,n,idx+1,mpp);
-        return mpp[makeKey]=max(include,notinclude);
+        int notInclude=maxProfit(w,wt,val,n,idx+1,mpp)+0;
+        
+        return mpp[makeKey]=max(include,notInclude);
     }
-    //Function to return max value that can be put in knapsack of capacity W.
     int knapSack(int w, int wt[], int val[], int n) 
     { 
         int idx=0;
-        int profit=0;
-        // vector<vector<int>>dp(n+1,vector<int>(w+1,-1));
-        unordered_map<string,int>dp;
-       int ans=helper(w,wt,val,n,idx,dp);
-       return ans;
-        
+        unordered_map<string,int>mpp;
+        int ans=maxProfit(w,wt,val,n,idx,mpp);
+        return ans;
     }
-    
 };
 
 // { Driver Code Starts.
