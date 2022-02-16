@@ -9,10 +9,13 @@ class Solution{
 	int minDifference(int arr[], int n)  { 
 	    // Your code goes here
 	    int sum=0;
+	    
 	    for(int i=0;i<n;i++){
 	        sum=sum+arr[i];
 	    }
+	    
 	    bool dp[n+1][sum+1];
+	    
 	    for(int i=0;i<=n;i++){
 	        for(int j=0;j<=sum;j++){
 	            if(i==0){
@@ -23,6 +26,7 @@ class Solution{
 	            }
 	        }
 	    }
+	    
 	    for(int i=1;i<=n;i++){
 	        for(int j=1;j<=sum;j++){
 	            bool include=false;
@@ -35,16 +39,21 @@ class Solution{
 	        }
 	        
 	    }
+	    
 	    vector<int>brr;
+	    
 	    for(int i=0;i<=sum/2;i++){
 	        if(dp[n][i]==true){
 	            brr.push_back(i);
 	        }
 	    }
+	    
 	    int ans=INT_MAX;
+	    
 	    for(int i=0;i<brr.size();i++){
 	        ans=min(ans, sum-2*brr[i]);
 	    }
+	    
 	    return ans;
 	} 
 };
