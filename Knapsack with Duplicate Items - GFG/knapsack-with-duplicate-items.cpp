@@ -30,13 +30,25 @@ public:
     int knapSack(int n, int w, int val[], int wt[])
     {
        int idx=0;
-       vector<vector<int>>dp(n+1,vector<int>(w+1,-1));
+       //vector<vector<int>>dp(n+1,vector<int>(w+1,-1));
+       int dp[n+1][w+1];
        for(int i=0;i<=n;i++){
            for(int j=0;j<=w;j++){
-               dp[i][j]= -1;
+               dp[i][j]= 0;
            }
        }
-       int ans=maxProfit(n,w,val,wt,dp,idx);
+       
+       for(int i=1;i<=n;i++){
+           for(int j=1;j<=w;j++){
+               int include=0;
+               if(j-wt[i-1]>=0){
+                   include=val[i-1]+dp[i][j-wt[i-1]];
+               }
+               int notinclude=0+dp[i-1][j];
+               dp[i][j]=max(include,notinclude);
+           }
+       }
+       int ans=dp[n][w];
        return ans;
     }
 };
