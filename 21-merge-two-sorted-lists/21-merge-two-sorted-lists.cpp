@@ -39,6 +39,7 @@ public:
                 trial=trial->next;
             }
         }
+        
         while(ll1!=NULL){
             trial->next=ll1;
             ll1=ll1->next;
@@ -50,6 +51,7 @@ public:
             ll2=ll2->next;
             trial=trial->next;
         }
+        
         return ResultNode->next;
     }
 };
