@@ -5,13 +5,13 @@ public:
         if(src==desti){
             return true;
         }
-        
+        bool status=false;
         if(visited[src]==true){
             return false;
         }
         
         visited[src]=true;
-        bool status=false;
+        
         for(int i=0;i<graph[src].size();i++){
             status= status || pathExist(graph[src][i],desti,graph,visited);
         }
