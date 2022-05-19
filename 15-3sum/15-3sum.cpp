@@ -4,37 +4,45 @@ public:
         sort(arr.begin(),arr.end());
         vector<vector<int>>ans;
         int n=arr.size();
+        
+        if(n<3){
+            return ans;
+        }
         for(int i=0;i<n-2;i++){
-            if(i==0 || (i>0 && arr[i]!=arr[i-1])){
-                int lo=i+1;
-                int hi=n-1;
-               int sum=0-arr[i];
-                while(lo<hi){
-                    if(arr[lo]+arr[hi]==sum){
-                        vector<int>v;
-                        v.push_back(arr[i]);
-                        v.push_back(arr[lo]);
-                        v.push_back(arr[hi]);
-                        ans.push_back(v);
-                        while(lo<hi && arr[lo]==arr[lo+1]){
-                            lo++;
-                        }
-                        while(lo<hi && arr[hi]==arr[hi-1]){
-                            hi--;
-                        } 
-                        hi--;
+            if(i==0 || (arr[i]!=arr[i-1])){
+                
+            
+           int lo=i+1;
+           int hi=n-1;
+            
+            while(lo<hi){
+                
+                if(arr[i]+arr[lo]+arr[hi]==0){
+                    vector<int>temp;
+                    temp.push_back(arr[i]);
+                    temp.push_back(arr[lo]);
+                    temp.push_back(arr[hi]);
+                    ans.push_back(temp);
+                      while(lo<hi && arr[lo]==arr[lo+1]){
                         lo++;
                     }
-                    else if(arr[lo]+arr[hi]<sum){
-                        lo++;
-                    }
-                    else{
+                    while(lo<hi && arr[hi]==arr[hi-1]){
                         hi--;
                     }
+                    lo++;
+                    hi--;
+                  
+                }
+                else if(arr[i]+arr[lo]+arr[hi]<0){
+                    lo++;
+                }
+                else{
+                    hi--;
                 }
             }
+            
         }
-        
+        }
         return ans;
     }
 };
