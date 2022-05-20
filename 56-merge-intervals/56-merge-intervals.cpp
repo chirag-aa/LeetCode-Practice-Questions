@@ -12,7 +12,7 @@ public:
                if(second>=tempFirst && tempSecond<=second){
                 continue;
               }
-            if(second>=tempFirst && tempSecond>=second){
+            else if(second>=tempFirst && tempSecond>=second){
                 second=tempSecond;
             }
 
