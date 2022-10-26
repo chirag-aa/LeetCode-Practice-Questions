@@ -14,7 +14,7 @@ public:
     int findminDepth(TreeNode* root)
     {
         if(root==NULL){
-            return INT_MAX;
+            return 1000000;
         }
         
         if(root->left==NULL && root->right==NULL){
