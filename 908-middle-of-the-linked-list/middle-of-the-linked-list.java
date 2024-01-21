@@ -16,18 +16,13 @@ class Solution {
         if(head.next==null){
             return head;
         }
-        ListNode temp = head;
-        int len=0;
-        while(temp!=null){
-            temp=temp.next;
-            len++;
+        ListNode slow = head;
+        ListNode fast = head;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
         }
-        int middleNode = (len/2) + 1;
-        ListNode middleNode1 = head;
-        while(middleNode>1){
-            middleNode--;
-            middleNode1=middleNode1.next;
-        }
-        return middleNode1;
+        return slow;
+
     }
 }
