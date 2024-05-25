@@ -1,46 +1,68 @@
+class Pair {
+    private int ele;
+    private int minEle;
+
+    Pair(int ele,int minEle){
+        this.ele = ele;
+        this.minEle = minEle;
+    }
+    int getEle(){
+        return this.ele;
+    }
+    int getminEle(){
+        return this.minEle;
+    }
+
+}
 class MinStack {
-    
-    private List<Integer>stack;
-    int top;
+     
+    Stack<Pair>s1;
+
     public MinStack() {
-      stack = new ArrayList<>();
-      top = -1;
+        s1 = new Stack<>();
     }
     
     public void push(int val) {
-        if(top==-1){
-            top++;
-            stack.add(val);
+        if(s1.isEmpty()){
+            Pair p1 = new Pair(val,val);
+            s1.push(p1);
             return;
         }
-        top++;
-        stack.add(val);
+        Pair p2 = s1.peek();
+        int minEle = p2.getminEle();
+        if(minEle<val){
+            Pair p1 = new Pair(val,minEle);
+            s1.push(p1);
+        }
+        else {
+            Pair p1 = new Pair(val,val);
+            s1.push(p1);
+        }
         return;
     }
     
     public void pop() {
-        if(top==-1){
+        if(!s1.isEmpty()){
+            s1.pop();
             return;
         }
-        stack.remove(top);
-        top--;
+        return;
     }
     
     public int top() {
-        if(top==-1){
-            return -1;
+        if(!s1.isEmpty()){
+            Pair p1 = s1.peek();
+            return p1.getEle();
         }
-        int topElement = stack.get(top);
-        return topElement;
+        return -1;
     }
     
     public int getMin() {
-        int minElement = Integer.MAX_VALUE;
-        int n = stack.size();
-        for(int i=0;i<n;i++){
-            minElement = Math.min(minElement,stack.get(i));
+        if(!s1.isEmpty()){
+            Pair p1 = s1.peek();
+            return p1.getminEle();
         }
-        return minElement;
+        return -1;
     }
 }
 
