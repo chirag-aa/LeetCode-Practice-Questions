@@ -25,10 +25,8 @@ class Solution {
             sMpp.put(s.charAt(j),1);
           }
 
-          if(j-i+1<windowSize){
-            j++;
-          }
-          else if(j-i+1 == windowSize){
+         
+         if(j-i+1 == windowSize){
             if(sMpp.size()==pMpp.size()){
                 if(sMpp.equals(pMpp)){
                     answer.add(i);
@@ -41,8 +39,9 @@ class Solution {
                 }
             }
             i++;
-            j++;
+            
           }
+          j++;
         }
         return answer;
     }
